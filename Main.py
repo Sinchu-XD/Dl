@@ -33,7 +33,7 @@ async def start(_, msg):
         "Bas link bhejo 👇"
     )
 
-@app.on_message(filters.text & ~filters.command)
+@app.on_message(filters.text & ~filters.command([]))
 async def download(_, msg):
     url = msg.text.strip()
     status = await msg.reply("⏳ Download ho raha hai...")
@@ -56,5 +56,6 @@ async def download(_, msg):
 
     except Exception as e:
         await status.edit(f"❌ Error:\n`{e}`")
+
 
 app.run()
